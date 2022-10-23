@@ -22,6 +22,7 @@ const Login = () => {
     gapi.load("client:auth2", initClient);
   });
   const responseGoogle = (response) => {
+    console.log("Google login success:");
     localStorage.setItem("user", JSON.stringify(response.profileObj));
     const { name, googleId, imageUrl } = response.profileObj;
     const doc = {
@@ -36,7 +37,7 @@ const Login = () => {
   };
 
   const onFailure = (err) => {
-    console.log("failed:", err);
+    console.log("Google login failed:", err);
   };
 
   return (
